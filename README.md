@@ -14,14 +14,14 @@ compiler support for C++11 or later.
 
 ## Usage
 
-**Creating signals**
+#### Creating signals
 ```cpp
 sl::Signal<> sig0;            // signal without parameters.
 sl::Signal<std::string> sig1; // signal with one parameter (std::string).
 sl::Signal<double, int> sig2; // signal with two parameters (double and int).
 ```
 
-**Connecting slots**
+#### Connecting slots
 ```cpp
 sl::Signal<int> sig;
 ```
@@ -65,7 +65,7 @@ struct Bar
 sig.connect(sl::Slot<int>(Bar()));
 ```
 
-**Disconnecting slots**
+#### Disconnecting slots
 ```cpp
 void foo(int x) {}
 sl::Signal<int> sig;
@@ -116,13 +116,13 @@ Baz b;
 sig.connect(b.onBar);
 ```
 
-**Emitting signals**
+#### Emitting signals
 ```cpp
 sl::Signal<int> sig;
 sig(1); // or sig.emit(1);
 ```
 
-**Copying and moving**
+#### Copying and moving
 
 Signal copying is disabled as I have not found an intuitive behaviour for
 this operation. Moving signals is allowed and it transfers all connected slots
@@ -136,7 +136,7 @@ it is disconnected first, and the new one is connected to that signal.
 The moved slot is left in a valid state, having no callback. A new callback
 can be assigned using the `setCallback` method.
 
-**Thread safety**
+#### Thread safety
 
 The library does not guarantee thread safety in its current state. I am
 considering making it thread safe in the future.
