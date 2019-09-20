@@ -71,6 +71,13 @@ void foo(int x) {}
 sl::Signal<int> sig;
 ```
 
+Disconnect using the slot interface.
+```cpp
+sl::Slot<int> slot(foo);
+sig.connect(slot);
+slot.disconnect();
+```
+
 Disconnect by passing a reference or a pointer to the slot.
 ```cpp
 sl::Slot<int> slot(foo);
