@@ -1,6 +1,8 @@
 sling
 =====
-[![License: MIT](http://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![MIT license](https://img.shields.io/github/license/adrg/sling)](https://opensource.org/licenses/MIT)
+[![GitHub issues](https://img.shields.io/github/issues/adrg/sling)](https://github.com/adrg/sling/issues)
+[![Buy me a coffee](https://img.shields.io/static/v1.svg?label=%20&message=Buy%20me%20a%20coffee&color=579fbf&logo=buy%20me%20a%20coffee&logoColor=white)](https://ko-fi.com/T6T72WATK)
 
 sling is a lightweight C++ implementation of signals and slots. A slot is
 essentially a callback wrapper which can be created from different kinds of
@@ -144,11 +146,11 @@ considering making it thread safe in the future.
 ## Contributing
 
 Contributions in the form of pull requests, issues or just general feedback,
-are always welcome.
-See [CONTRIBUTING.MD](https://github.com/adrg/sling/blob/master/CONTRIBUTING.md).
+are always welcome.  
+See [CONTRIBUTING.MD](CONTRIBUTING.md).
 
 ## License
 Copyright (c) 2019 Adrian-George Bostan.
 
 This project is licensed under the [MIT license](http://opensource.org/licenses/MIT).
-See [LICENSE](https://github.com/adrg/sling/blob/master/LICENSE) for more details.
+See [LICENSE](LICENSE) for more details.
