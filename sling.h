@@ -26,6 +26,8 @@ THE SOFTWARE.
 #include <functional>
 #include <map>
 
+#include "slingdefs.h"
+
 namespace sl
 {
     using SlotKey = std::size_t;
