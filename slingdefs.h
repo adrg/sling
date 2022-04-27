@@ -31,4 +31,4 @@ THE SOFTWARE.
     #define slots
 #endif // slots
 
-#endif
+#endif // SLING_SLINGDEFS_H
