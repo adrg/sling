@@ -95,10 +95,10 @@ sig.connect(slot);
 sig.disconnect(slot); // or sig.disconnect(&slot);
 ```
 
-Disconnect by passing the slot key returned on signal connection.
+Disconnect by passing the slot ID returned on signal connection.
 ```cpp
-sl::SlotKey key = sig.connect(sl::Slot<int>(foo));
-sig.disconnect(key);
+sl::SlotID slotID = sig.connect(sl::Slot<int>(foo));
+sig.disconnect(slotID);
 ```
 
 Disconnect all slots.
