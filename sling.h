@@ -33,7 +33,7 @@ THE SOFTWARE.
 
 namespace sl
 {
-    using SlotKey = std::size_t;
+    using SlotID = std::size_t;
 
     template<typename ...Args>
     class Signal;
@@ -46,12 +46,12 @@ namespace sl
         {
             Signal<Args...>* signal;
             Slot<Args...>* slot;
-            SlotKey key;
+            SlotID slotID;
             bool managed;
 
             Connection(Signal<Args...>* signal, Slot<Args...>* slot,
-                SlotKey key, bool managed) :
-                signal(signal), slot(slot), key(key), managed(managed) {
+                SlotID slotID, bool managed) :
+                signal(signal), slot(slot), slotID(slotID), managed(managed) {
             }
 
             void releaseSlot() {
@@ -156,15 +156,15 @@ namespace sl
         using Connection = typename Slot<Args...>::Connection;
 
         std::map<std::size_t, Connection> connections;
-        SlotKey sequence;
+        SlotID sequence;
 
-        SlotKey connect(Slot<Args...>* slot, bool managed) {
+        SlotID connect(Slot<Args...>* slot, bool managed) {
             if (slot == nullptr) {
                 return 0;
             }
             if (slot->connection != nullptr) {
                 if (slot->connection->signal == this) {
-                    return slot->connection->key;
+                    return slot->connection->slotID;
                 }
                 slot->disconnect();
             }
@@ -218,20 +218,20 @@ namespace sl
             this->emit(args...);
         }
 
-        SlotKey connect(Slot<Args...>* slot) {
+        SlotID connect(Slot<Args...>* slot) {
             return this->connect(slot, false);
         }
 
-        SlotKey connect(Slot<Args...>& slot) {
+        SlotID connect(Slot<Args...>& slot) {
             return this->connect(&slot, false);
         }
 
-        SlotKey connect(Slot<Args...>&& slot) {
+        SlotID connect(Slot<Args...>&& slot) {
             return this->connect(new Slot<Args...>(std::move(slot)), true);
         }
 
-        void disconnect(SlotKey key) {
-            auto it = this->connections.find(key);
+        void disconnect(SlotID slotID) {
+            auto it = this->connections.find(slotID);
             if (it != this->connections.end()) {
                 it->second.releaseSlot();
                 this->connections.erase(it);
@@ -241,7 +241,7 @@ namespace sl
         void disconnect(Slot<Args...>* slot) {
             if (slot != nullptr && slot->connection != nullptr &&
                 slot->connection->signal == this) {
-                this->disconnect(slot->connection->key);
+                this->disconnect(slot->connection->slotID);
             }
         }
 
