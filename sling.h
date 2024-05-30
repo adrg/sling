@@ -259,7 +259,7 @@ namespace sl
         void emit(Args... args) const {
             for (const auto& conn : this->connections) {
                 if (conn.second.slot->callback) {
-                    conn.second.slot->callback(std::forward<Args>(args)...);
+                    conn.second.slot->callback(args...);
                 }
             }
         }
