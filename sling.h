@@ -23,6 +23,11 @@ THE SOFTWARE.
 #ifndef SLING_SIGSLOT_H
 #define SLING_SIGSLOT_H
 
+#ifndef SLING_SKIP_DEFS
+#define signals
+#define slots
+#endif
+
 #include <functional>
 #include <map>
 
